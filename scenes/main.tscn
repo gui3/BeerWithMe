@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://clrk8d87uqphp"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_4gwkj"]
+[ext_resource type="PackedScene" uid="uid://cxtp8rebmpred" path="res://scenes/drop.tscn" id="2_wsils"]
+[ext_resource type="PackedScene" uid="uid://csugo1d2aafs6" path="res://scenes/hud.tscn" id="3_fewm0"]
+[ext_resource type="PackedScene" uid="uid://bayykv3q3qasa" path="res://scenes/glass.tscn" id="3_nmv82"]
+[ext_resource type="PackedScene" uid="uid://c8ba7vgo7lhki" path="res://scenes/bar.tscn" id="3_xihlp"]
+
+[sub_resource type="Curve2D" id="Curve2D_5jkbx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -64, 0, 0, 0, 0, 360, -64)
+}
+point_count = 2
+
+[node name="Main" type="Node"]
+script = ExtResource("1_4gwkj")
+drop_scene = ExtResource("2_wsils")
+
+[node name="HUD" parent="." instance=ExtResource("3_fewm0")]
+
+[node name="DropPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_5jkbx")
+
+[node name="DropSpawnLocation" type="PathFollow2D" parent="DropPath"]
+position = Vector2(0, -64)
+
+[node name="DropSpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Glass" parent="." instance=ExtResource("3_nmv82")]
+position = Vector2(184, 592)
+scale = Vector2(0.2, 0.2)
+
+[node name="Bar" parent="." instance=ExtResource("3_xihlp")]
+
+[node name="GameSizeRect" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, 0, 360, 0, 360, 640, 0, 640)
+
+[connection signal="game_ended" from="HUD" to="." method="_on_hud_game_ended"]
+[connection signal="game_started" from="HUD" to="." method="_on_hud_game_started"]
+[connection signal="timeout" from="DropSpawnTimer" to="." method="_on_drop_spawn_timer_timeout"]
+[connection signal="drop_collected" from="Glass" to="." method="_on_glass_drop_collected"]
+[connection signal="bar_reached" from="Bar" to="." method="_on_bar_bar_reached"]

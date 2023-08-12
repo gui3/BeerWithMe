@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bqpci84hngjfi"]
+
+[sub_resource type="Gradient" id="Gradient_s02fo"]
+colors = PackedColorArray(0.306829, 0.152494, 0, 0.945098, 0.988235, 0.945098, 0.317647, 0.819608)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5kc4t"]
+gradient = SubResource("Gradient_s02fo")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_agaj2"]
+texture = SubResource("GradientTexture2D_5kc4t")
+
+[sub_resource type="Gradient" id="Gradient_h3wjr"]
+colors = PackedColorArray(0.305882, 0.152941, 0, 0.780392, 0.956863, 0.662745, 0, 0.788235)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ju1yw"]
+gradient = SubResource("Gradient_h3wjr")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v33sn"]
+texture = SubResource("GradientTexture2D_ju1yw")
+
+[sub_resource type="Gradient" id="Gradient_t645r"]
+offsets = PackedFloat32Array(0.268041, 1)
+colors = PackedColorArray(0.305882, 0.152941, 0, 0.788235, 0.956863, 0.662745, 0, 0.780392)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pcgc3"]
+gradient = SubResource("Gradient_t645r")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0c0ij"]
+texture = SubResource("GradientTexture2D_pcgc3")
+
+[resource]
+Button/colors/font_color = Color(0.0156863, 0.109804, 0, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 16
+Button/styles/hover = SubResource("StyleBoxTexture_agaj2")
+Button/styles/normal = SubResource("StyleBoxTexture_v33sn")
+Button/styles/pressed = SubResource("StyleBoxTexture_0c0ij")

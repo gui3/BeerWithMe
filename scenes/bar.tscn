@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8ba7vgo7lhki"]
+
+[ext_resource type="Script" path="res://scenes/bar.gd" id="1_w1d88"]
+[ext_resource type="Texture2D" uid="uid://c1dd81objlns" path="res://assets/bar.png" id="2_vcowd"]
+[ext_resource type="Texture2D" uid="uid://c86yqjb8dsgw0" path="res://assets/beer_pond.png" id="3_kkphd"]
+[ext_resource type="Texture2D" uid="uid://bmj81dtbmnt03" path="res://assets/splash_out.png" id="4_pa3dq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fnw2"]
+size = Vector2(372, 64)
+
+[sub_resource type="Gradient" id="Gradient_jo8ms"]
+colors = PackedColorArray(0.0666667, 0.141176, 0.0705882, 1, 0, 0.0470588, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i6tsj"]
+gradient = SubResource("Gradient_jo8ms")
+fill = 1
+fill_from = Vector2(0.5, 0.4)
+fill_to = Vector2(0, 1)
+
+[node name="Bar" type="Area2D"]
+z_index = -1
+priority = 1
+script = ExtResource("1_w1d88")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(178, 616)
+shape = SubResource("RectangleShape2D_6fnw2")
+
+[node name="BarCenterMarker" type="Marker2D" parent="."]
+position = Vector2(180, 576)
+
+[node name="Furniture" type="TextureRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 504.0
+offset_right = 360.0
+offset_bottom = 639.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_vcowd")
+expand_mode = 2
+
+[node name="BeerSpilledSprite" type="Sprite2D" parent="."]
+position = Vector2(180, 576)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_kkphd")
+
+[node name="SplashOutSprite" type="Sprite2D" parent="."]
+position = Vector2(176, 568)
+scale = Vector2(0.3, 0.25)
+texture = ExtResource("4_pa3dq")
+offset = Vector2(0, -50)
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -10
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 368.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_i6tsj")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

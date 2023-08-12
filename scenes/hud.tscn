@@ -1,0 +1,272 @@
+[gd_scene load_steps=21 format=3 uid="uid://csugo1d2aafs6"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_rt83x"]
+[ext_resource type="Texture2D" uid="uid://ba5w2uu5f7qtc" path="res://assets/beer_drop.png" id="1_ybf8d"]
+[ext_resource type="Texture2D" uid="uid://cts112n1w3iol" path="res://assets/Glass_full.png" id="2_8dxmd"]
+[ext_resource type="Texture2D" uid="uid://c86yqjb8dsgw0" path="res://assets/beer_pond.png" id="3_cc3hq"]
+[ext_resource type="Theme" uid="uid://bqpci84hngjfi" path="res://themes/irish.tres" id="4_ge4dn"]
+
+[sub_resource type="SystemFont" id="SystemFont_oaajs"]
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_oihid"]
+default_font = SubResource("SystemFont_oaajs")
+default_font_size = 64
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ile5m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5hd6t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n6x6q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0jgcu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fokk"]
+font_size = 48
+outline_size = 3
+outline_color = Color(1, 0.631373, 0, 1)
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 0.47451)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8edl"]
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 0.47451)
+
+[sub_resource type="InputEventKey" id="InputEventKey_i446f"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_i8tqu"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_sed4k"]
+events = [SubResource("InputEventKey_i446f"), SubResource("InputEventKey_i8tqu")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ia7s1"]
+line_spacing = 1.0
+font_size = 64
+outline_size = 6
+
+[sub_resource type="InputEventKey" id="InputEventKey_lcnvu"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_qtdj2"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_0nopm"]
+events = [SubResource("InputEventKey_lcnvu"), SubResource("InputEventKey_qtdj2")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_rt83x")
+
+[node name="GameControls" type="CanvasLayer" parent="."]
+
+[node name="ButtonRight" type="Button" parent="GameControls"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_oihid")
+theme_override_colors/font_pressed_color = Color(0.890196, 0.490196, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ile5m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5hd6t")
+toggle_mode = true
+action_mode = 0
+button_mask = 7
+text = ">"
+flat = true
+alignment = 2
+
+[node name="ButtonLeft" type="Button" parent="GameControls"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 180.0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_oihid")
+theme_override_colors/font_pressed_color = Color(0.89, 0.4895, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_n6x6q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0jgcu")
+toggle_mode = true
+action_mode = 0
+button_mask = 7
+text = "<"
+flat = true
+alignment = 0
+
+[node name="ScoreLabel" type="Label" parent="GameControls"]
+offset_left = 50.0
+offset_right = 192.0
+offset_bottom = 70.0
+text = "0"
+label_settings = SubResource("LabelSettings_1fokk")
+
+[node name="ScoreLogo" type="Sprite2D" parent="GameControls"]
+position = Vector2(24, 40)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_8dxmd")
+flip_h = true
+
+[node name="SlipperyLogo" type="Sprite2D" parent="GameControls"]
+position = Vector2(36, 101.8)
+scale = Vector2(0.0699029, 0.108594)
+texture = ExtResource("3_cc3hq")
+flip_h = true
+
+[node name="DropsLogo" type="Sprite2D" parent="GameControls"]
+position = Vector2(88, 70)
+scale = Vector2(0.046875, 0.0429688)
+texture = ExtResource("1_ybf8d")
+
+[node name="SlipperyLabel" type="Label" parent="GameControls"]
+offset_top = 66.0
+offset_right = 76.0
+offset_bottom = 114.0
+text = "0%"
+label_settings = SubResource("LabelSettings_o8edl")
+horizontal_alignment = 1
+
+[node name="ButtonStop" type="Button" parent="GameControls"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme = ExtResource("4_ge4dn")
+theme_override_font_sizes/font_size = 24
+button_mask = 7
+shortcut = SubResource("Shortcut_sed4k")
+text = "Stop"
+flat = true
+
+[node name="TiersFixLabel" type="Label" parent="GameControls"]
+visible = false
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 64.0
+offset_bottom = 74.0
+text = "/5"
+
+[node name="TiersVarLabel" type="Label" parent="GameControls"]
+visible = false
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 74.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="DropsLabel" type="Label" parent="GameControls"]
+offset_left = 100.0
+offset_top = 59.0
+offset_right = 154.0
+offset_bottom = 85.0
+text = "0"
+
+[node name="MenuControls" type="CanvasLayer" parent="."]
+
+[node name="MessageBox" type="Label" parent="MenuControls"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 120.0
+offset_right = -32.0
+offset_bottom = -342.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ge4dn")
+text = "Beer With Me"
+label_settings = SubResource("LabelSettings_ia7s1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonMenu" type="Button" parent="MenuControls"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 16.0
+offset_right = 90.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ge4dn")
+theme_override_font_sizes/font_size = 48
+button_mask = 7
+shortcut = SubResource("Shortcut_0nopm")
+text = "Play!"
+metadata/_edit_use_anchors_ = true
+
+[node name="DropsLogo" type="Sprite2D" parent="MenuControls"]
+position = Vector2(88, 70)
+scale = Vector2(0.046875, 0.0429688)
+texture = ExtResource("1_ybf8d")
+
+[node name="BestScoreLogo" type="Sprite2D" parent="MenuControls"]
+position = Vector2(24, 40)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_8dxmd")
+flip_h = true
+
+[node name="BestScoreLabel" type="Label" parent="MenuControls"]
+offset_left = 50.0
+offset_right = 192.0
+offset_bottom = 70.0
+text = "0"
+label_settings = SubResource("LabelSettings_1fokk")
+
+[node name="TiersFixLabel" type="Label" parent="MenuControls"]
+visible = false
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 64.0
+offset_bottom = 74.0
+text = "/5"
+
+[node name="TiersVarLabel" type="Label" parent="MenuControls"]
+visible = false
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 74.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="DropsLabel" type="Label" parent="MenuControls"]
+offset_left = 100.0
+offset_top = 59.0
+offset_right = 154.0
+offset_bottom = 85.0
+text = "0"
+
+[connection signal="button_down" from="GameControls/ButtonRight" to="." method="_on_button_right_button_down"]
+[connection signal="button_up" from="GameControls/ButtonRight" to="." method="_on_button_right_button_up"]
+[connection signal="mouse_exited" from="GameControls/ButtonRight" to="." method="_on_button_right_button_up"]
+[connection signal="button_down" from="GameControls/ButtonLeft" to="." method="_on_button_left_button_down"]
+[connection signal="button_up" from="GameControls/ButtonLeft" to="." method="_on_button_left_button_up"]
+[connection signal="mouse_exited" from="GameControls/ButtonLeft" to="." method="_on_button_left_button_up"]
+[connection signal="pressed" from="GameControls/ButtonStop" to="." method="_on_button_stop_pressed"]
+[connection signal="pressed" from="MenuControls/ButtonMenu" to="." method="_on_button_menu_pressed"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://bayykv3q3qasa"]
+
+[ext_resource type="Script" path="res://scenes/glass.gd" id="1_55vd0"]
+[ext_resource type="Texture2D" uid="uid://bvyoe0l45papm" path="res://assets/Glass_empty.png" id="1_kf6pp"]
+[ext_resource type="Texture2D" uid="uid://cts112n1w3iol" path="res://assets/Glass_full.png" id="2_3go66"]
+[ext_resource type="Texture2D" uid="uid://6s3ug3ab6oxy" path="res://assets/Glass_mid.png" id="3_73llv"]
+[ext_resource type="Texture2D" uid="uid://5wwoh5qvism0" path="res://assets/splash_in.png" id="5_1do00"]
+[ext_resource type="AudioStream" uid="uid://hisoxg6itmd0" path="res://assets/audio/effects/Touk.wav" id="6_r1q2x"]
+[ext_resource type="AudioStream" uid="uid://dro2m08ldp5ad" path="res://assets/audio/effects/Bump.wav" id="7_6x6dh"]
+[ext_resource type="AudioStream" uid="uid://cabg3yef2dfle" path="res://assets/audio/effects/Slide.wav" id="8_65yce"]
+[ext_resource type="AudioStream" uid="uid://chvcyenwt6s3e" path="res://assets/audio/effects/Tchin.wav" id="9_mlasf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wmv8"]
+size = Vector2(282.5, 262.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjlel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kf6pp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_73llv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_73llv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_73llv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3go66")
+}],
+"loop": true,
+"name": &"filling",
+"speed": 5.0
+}]
+
+[node name="Glass" type="Area2D"]
+z_index = 2
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_55vd0")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16.25, -263.75)
+shape = SubResource("RectangleShape2D_5wmv8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -187.5)
+sprite_frames = SubResource("SpriteFrames_kjlel")
+animation = &"filling"
+
+[node name="SplashInSprite" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(2.38419e-06, -530)
+texture = ExtResource("5_1do00")
+
+[node name="SoundTouk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_r1q2x")
+
+[node name="SoundBump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6x6dh")
+
+[node name="SoundSlide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_65yce")
+
+[node name="SoundTchin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mlasf")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
