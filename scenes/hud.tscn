@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://csugo1d2aafs6"]
+[gd_scene load_steps=23 format=3 uid="uid://csugo1d2aafs6"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_rt83x"]
-[ext_resource type="Texture2D" uid="uid://ba5w2uu5f7qtc" path="res://assets/beer_drop.png" id="1_ybf8d"]
-[ext_resource type="Texture2D" uid="uid://cts112n1w3iol" path="res://assets/Glass_full.png" id="2_8dxmd"]
-[ext_resource type="Texture2D" uid="uid://c86yqjb8dsgw0" path="res://assets/beer_pond.png" id="3_cc3hq"]
+[ext_resource type="Texture2D" uid="uid://ba5w2uu5f7qtc" path="res://assets/art/beer_drop.png" id="1_ybf8d"]
+[ext_resource type="LabelSettings" uid="uid://yhqqkpvgq08t" path="res://themes/button_idle.tres" id="2_137jl"]
+[ext_resource type="LabelSettings" uid="uid://buwmvf1g2y0lg" path="res://themes/button_active.tres" id="3_07mxo"]
+[ext_resource type="Texture2D" uid="uid://c86yqjb8dsgw0" path="res://assets/art/beer_pond.png" id="3_cc3hq"]
 [ext_resource type="Theme" uid="uid://bqpci84hngjfi" path="res://themes/irish.tres" id="4_ge4dn"]
 
 [sub_resource type="SystemFont" id="SystemFont_oaajs"]
@@ -12,14 +13,6 @@ subpixel_positioning = 0
 [sub_resource type="Theme" id="Theme_oihid"]
 default_font = SubResource("SystemFont_oaajs")
 default_font_size = 64
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ile5m"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5hd6t"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n6x6q"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0jgcu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1fokk"]
 font_size = 48
@@ -64,12 +57,83 @@ unicode = 32
 [sub_resource type="Shortcut" id="Shortcut_0nopm"]
 events = [SubResource("InputEventKey_lcnvu"), SubResource("InputEventKey_qtdj2")]
 
+[sub_resource type="Animation" id="Animation_jdaog"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_i6804"]
+resource_name = "score_bump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameControls/ScoreLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.5),
+"transitions": PackedFloat32Array(1, 0.25, 2.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameControls/ScoreLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.5),
+"transitions": PackedFloat32Array(1, 0.25, 2.5),
+"update": 0,
+"values": [Vector2(50, 0), Vector2(34, -32), Vector2(50, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ciuay"]
+resource_name = "slip_bump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameControls/SlipperyLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 0.25, 2.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameControls/SlipperyLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 0.25, 2.5),
+"update": 0,
+"values": [Vector2(0, 66), Vector2(-24, 32), Vector2(0, 66)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mbgon"]
+_data = {
+"RESET": SubResource("Animation_jdaog"),
+"score_bump": SubResource("Animation_i6804"),
+"slip_bump": SubResource("Animation_ciuay")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty4ch"]
+size = Vector2(360, 640)
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_rt83x")
+arrow_idle = ExtResource("2_137jl")
+arrow_active = ExtResource("3_07mxo")
 
 [node name="GameControls" type="CanvasLayer" parent="."]
 
-[node name="ButtonRight" type="Button" parent="GameControls"]
+[node name="ButtonRight" type="Label" parent="GameControls"]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -79,57 +143,47 @@ grow_horizontal = 0
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_oihid")
-theme_override_colors/font_pressed_color = Color(0.890196, 0.490196, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_ile5m")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_5hd6t")
-toggle_mode = true
-action_mode = 0
-button_mask = 7
 text = ">"
-flat = true
-alignment = 2
+label_settings = ExtResource("2_137jl")
+horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="ButtonLeft" type="Button" parent="GameControls"]
+[node name="ButtonLeft" type="Label" parent="GameControls"]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 180.0
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_oihid")
-theme_override_colors/font_pressed_color = Color(0.89, 0.4895, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_n6x6q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0jgcu")
-toggle_mode = true
-action_mode = 0
-button_mask = 7
 text = "<"
-flat = true
-alignment = 0
+label_settings = ExtResource("2_137jl")
+vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="GameControls"]
 offset_left = 50.0
-offset_right = 192.0
+offset_right = 77.0
 offset_bottom = 70.0
 text = "0"
 label_settings = SubResource("LabelSettings_1fokk")
 
 [node name="ScoreLogo" type="Sprite2D" parent="GameControls"]
-position = Vector2(24, 40)
+position = Vector2(24, 32)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_8dxmd")
+texture = ExtResource("1_ybf8d")
 flip_h = true
 
 [node name="SlipperyLogo" type="Sprite2D" parent="GameControls"]
-position = Vector2(36, 101.8)
+position = Vector2(36, 106)
 scale = Vector2(0.0699029, 0.108594)
 texture = ExtResource("3_cc3hq")
 flip_h = true
 
 [node name="DropsLogo" type="Sprite2D" parent="GameControls"]
+visible = false
 position = Vector2(88, 70)
 scale = Vector2(0.046875, 0.0429688)
 texture = ExtResource("1_ybf8d")
@@ -174,6 +228,7 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="DropsLabel" type="Label" parent="GameControls"]
+visible = false
 offset_left = 100.0
 offset_top = 59.0
 offset_right = 154.0
@@ -213,6 +268,7 @@ offset_right = 90.0
 offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("4_ge4dn")
 theme_override_font_sizes/font_size = 48
 button_mask = 7
@@ -221,14 +277,15 @@ text = "Play!"
 metadata/_edit_use_anchors_ = true
 
 [node name="DropsLogo" type="Sprite2D" parent="MenuControls"]
+visible = false
 position = Vector2(88, 70)
 scale = Vector2(0.046875, 0.0429688)
 texture = ExtResource("1_ybf8d")
 
 [node name="BestScoreLogo" type="Sprite2D" parent="MenuControls"]
-position = Vector2(24, 40)
+position = Vector2(24, 32)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_8dxmd")
+texture = ExtResource("1_ybf8d")
 flip_h = true
 
 [node name="BestScoreLabel" type="Label" parent="MenuControls"]
@@ -256,17 +313,33 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="DropsLabel" type="Label" parent="MenuControls"]
+visible = false
 offset_left = 100.0
 offset_top = 59.0
 offset_right = 154.0
 offset_bottom = 85.0
 text = "0"
 
-[connection signal="button_down" from="GameControls/ButtonRight" to="." method="_on_button_right_button_down"]
-[connection signal="button_up" from="GameControls/ButtonRight" to="." method="_on_button_right_button_up"]
-[connection signal="mouse_exited" from="GameControls/ButtonRight" to="." method="_on_button_right_button_up"]
-[connection signal="button_down" from="GameControls/ButtonLeft" to="." method="_on_button_left_button_down"]
-[connection signal="button_up" from="GameControls/ButtonLeft" to="." method="_on_button_left_button_up"]
-[connection signal="mouse_exited" from="GameControls/ButtonLeft" to="." method="_on_button_left_button_up"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mbgon")
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(180, 320)
+shape = SubResource("RectangleShape2D_ty4ch")
+shape_centered = false
+passby_press = true
+action = "touch"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+
 [connection signal="pressed" from="GameControls/ButtonStop" to="." method="_on_button_stop_pressed"]
 [connection signal="pressed" from="MenuControls/ButtonMenu" to="." method="_on_button_menu_pressed"]

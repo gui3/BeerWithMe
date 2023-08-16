@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EDIT appVersion="Waveform 12.5.5" projectID="553c4e/19c42a3" creationTime="1691784167014"
+      lastSignificantChange="189e69249af" modifiedBy="guill">
+  <TRANSPORT endToEnd="1" position="82.296875" scrubInterval="0.00801981203693714"
+             snapToTimecode="1"/>
+  <MACROPARAMETERS id="1001"/>
+  <PITCHSEQUENCE>
+    <PITCH startBeat="0.0" pitch="60"/>
+  </PITCHSEQUENCE>
+  <TEMPOSEQUENCE>
+    <TEMPO startBeat="0.0" bpm="120.0" curve="1.0"/>
+    <TIMESIG numerator="4" denominator="4" startBeat="0.0"/>
+  </TEMPOSEQUENCE>
+  <VIDEO/>
+  <AUTOMAPXML/>
+  <CLICKTRACK level="0.6025595664978027"/>
+  <ID3VORBISMETADATA trackNumber="1" date="2023"/>
+  <MASTERVOLUME>
+    <PLUGIN type="volume" volume="0.6376281380653381" id="1002" enabled="1">
+      <MACROPARAMETERS id="1003"/>
+      <MODIFIERASSIGNMENTS/>
+    </PLUGIN>
+  </MASTERVOLUME>
+  <RACKS/>
+  <MASTERPLUGINS/>
+  <AUXBUSNAMES/>
+  <INPUTDEVICES>
+    <INPUTDEVICE name="Virtual"/>
+    <INPUTDEVICE name="Input 1"/>
+    <INPUTDEVICE name="Input 2">
+      <INPUTDEVICEDESTINATION targetTrack="1024" targetIndex="0" armed="1"/>
+    </INPUTDEVICE>
+    <INPUTDEVICE name="KeyLab 61"/>
+  </INPUTDEVICES>
+  <TRACKCOMPS/>
+  <ARADOCUMENT/>
+  <CONTROLLERMAPPINGS/>
+  <VIEWSTATE minimalTransportBar="0" hiddenClips="" lockedClips="" chordTrackVisible="0"
+             arrangerTrackVisible="0" enabledTrackTags="" currentSidePanel="Search"
+             viewleft="82.27682546990766" viewright="82.67781607175452" scrollWhenPlaying="0"
+             scrollSuspended="0"/>
+  <EDITMIXGROUPS/>
+  <AUDIOEDITING/>
+  <ARRANGERTRACK name="Arranger" id="1054">
+    <MACROPARAMETERS id="1055"/>
+    <MODIFIERS/>
+  </ARRANGERTRACK>
+  <CHORDTRACK name="Chord" id="1058">
+    <MACROPARAMETERS id="1059"/>
+    <MODIFIERS/>
+  </CHORDTRACK>
+  <MARKERTRACK id="1004" name="Marker">
+    <MACROPARAMETERS id="1005"/>
+    <MODIFIERS/>
+  </MARKERTRACK>
+  <TEMPOTRACK name="Global" id="1056">
+    <MACROPARAMETERS id="1057"/>
+    <MODIFIERS/>
+  </TEMPOTRACK>
+  <MASTERTRACK name="Master" id="1060">
+    <MACROPARAMETERS id="1061"/>
+    <MODIFIERS/>
+  </MASTERTRACK>
+  <TRACK id="1024" midiVProp="0.28125" midiVOffset="0.359375" colour="ff00ff00"
+         height="50.0" name="mic" imageIdOrData="id:TrackImage_IconMic_svg">
+    <MACROPARAMETERS id="1025"/>
+    <MODIFIERS/>
+    <AUDIOCLIP name="mic Recording 1" start="0.0" length="2.375" offset="12.125"
+               id="1063" source="553c4e/1f3fad" sync="0" elastiqueMode="0" pan="0.0"
+               colour="ffff0000" proxyAllowed="1" resamplingQuality="lagrange">
+      <LOOPINFO rootNote="-1" numBeats="32.67933333333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 2" start="5.625" length="19.61164583333333"
+               offset="0.0" id="1074" source="553c4e/a6a0b9" sync="0" elastiqueMode="0"
+               pan="0.0" colour="ffff0000" proxyAllowed="1" resamplingQuality="lagrange">
+      <LOOPINFO rootNote="-1" numBeats="39.22329166666667" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 3" start="26.0" length="34.28897916666666"
+               offset="0.0" id="1089" source="553c4e/335079c" sync="0" elastiqueMode="0"
+               pan="0.0" colour="ffff0000" proxyAllowed="1" resamplingQuality="lagrange">
+      <LOOPINFO rootNote="-1" numBeats="68.57795833333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 4" start="61.28125" length="20.2943125" offset="0.0"
+               id="1092" source="553c4e/3ec0475" sync="0" elastiqueMode="0"
+               pan="0.0" colour="ffff0000" proxyAllowed="1" resamplingQuality="lagrange">
+      <LOOPINFO rootNote="-1" numBeats="40.588625" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <PLUGIN type="volume" id="1026" enabled="1">
+      <MACROPARAMETERS id="1027"/>
+      <MODIFIERASSIGNMENTS/>
+    </PLUGIN>
+    <PLUGIN type="level" id="1028" enabled="1">
+      <MACROPARAMETERS id="1029"/>
+      <MODIFIERASSIGNMENTS/>
+    </PLUGIN>
+    <OUTPUTDEVICES>
+      <DEVICE name="(default audio output)"/>
+    </OUTPUTDEVICES>
+  </TRACK>
+  <TRACK id="1075" midiVProp="0.28125" midiVOffset="0.359375" colour="ffff00aa"
+         height="270.0" name="clips">
+    <MACROPARAMETERS id="1076"/>
+    <MODIFIERS/>
+    <AUDIOCLIP name="mic Recording 1" start="0.875" length="0.1875" offset="13.1875"
+               id="1083" source="553c4e/1f3fad" sync="0" elastiqueMode="0" pan="0.0"
+               colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               fadeIn="0.03421827857406707" fadeOut="0.03290219093660295">
+      <LOOPINFO rootNote="-1" numBeats="32.67933333333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 1" start="1.16" length="0.1875" offset="13.1875"
+               id="1082" source="553c4e/1f3fad" sync="0" elastiqueMode="0" pan="0.0"
+               colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               fadeIn="0.0" fadeOut="0.0">
+      <LOOPINFO rootNote="-1" numBeats="32.67933333333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 1" start="1.345541666666667" length="0.171875"
+               offset="12.17505100877393" id="1084" source="553c4e/1f3fad" sync="0"
+               elastiqueMode="0" pan="0.0" colour="ffffaa00" proxyAllowed="1"
+               resamplingQuality="lagrange" fadeIn="0.0" fadeOut="0.0" autoTempo="0"
+               transpose="0" speed="1.083265582906669">
+      <LOOPINFO rootNote="-1" numBeats="32.67933333333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 1" start="1.673666666666667" length="0.15625"
+               offset="10.98958333333333" id="1085" source="553c4e/1f3fad" sync="0"
+               elastiqueMode="0" pan="0.0" colour="ffffaa00" proxyAllowed="1"
+               resamplingQuality="lagrange" fadeIn="0.0" fadeOut="0.0" speed="1.2">
+      <LOOPINFO rootNote="-1" numBeats="32.67933333333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 1" start="2.095541666666667" length="0.140625"
+               offset="9.890625" id="1086" source="553c4e/1f3fad" sync="0" elastiqueMode="0"
+               pan="0.0" colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               fadeIn="0.0" fadeOut="0.0" speed="1.333333333333333">
+      <LOOPINFO rootNote="-1" numBeats="32.67933333333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 1" start="2.486166666666667" length="0.125"
+               offset="8.791666666666666" id="1087" source="553c4e/1f3fad" sync="0"
+               elastiqueMode="0" pan="0.0" colour="ffffaa00" proxyAllowed="1"
+               resamplingQuality="lagrange" fadeIn="0.0" fadeOut="0.0" speed="1.5">
+      <LOOPINFO rootNote="-1" numBeats="32.67933333333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 2" start="3.375" length="1.2265625" offset="0.5"
+               id="1081" source="553c4e/a6a0b9" sync="0" elastiqueMode="0" pan="0.0"
+               colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               fadeIn="0.02744542380863612" fadeOut="0.3201966111007548">
+      <LOOPINFO rootNote="-1" numBeats="39.22329166666667" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 3" start="60.5" length="0.75" offset="31.25"
+               id="1090" source="553c4e/335079c" sync="0" elastiqueMode="0"
+               pan="0.0" colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               fadeIn="0.04137047814251281" fadeOut="0.08963603597544442" gain="16.95999908447266">
+      <LOOPINFO rootNote="-1" numBeats="68.57795833333333" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 4" start="82.3125" length="0.1875" offset="2.53125"
+               id="1093" source="553c4e/3ec0475" sync="0" elastiqueMode="0"
+               pan="0.0" colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               fadeIn="0.01076909989162132" fadeOut="0.01837081746217754" gain="4.260000228881836">
+      <LOOPINFO rootNote="-1" numBeats="40.588625" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <PLUGIN type="volume" id="1077" enabled="1">
+      <MACROPARAMETERS id="1078"/>
+      <MODIFIERASSIGNMENTS/>
+    </PLUGIN>
+    <PLUGIN type="level" id="1079" enabled="1">
+      <MACROPARAMETERS id="1080"/>
+      <MODIFIERASSIGNMENTS/>
+    </PLUGIN>
+    <OUTPUTDEVICES>
+      <DEVICE name="(default audio output)"/>
+    </OUTPUTDEVICES>
+  </TRACK>
+</EDIT>

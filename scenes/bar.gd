@@ -1,6 +1,6 @@
 extends Area2D
 
-signal bar_reached
+signal bar_reached(position: Vector2)
 
 @export var beer_spilled_max_scale: float = 0.35
 
@@ -25,7 +25,7 @@ func set_slippery(percent: float):
 
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	emit_signal("bar_reached")
+	emit_signal("bar_reached", body)
 	body.queue_free()
 	play_animation_splash_out(body.position)
 

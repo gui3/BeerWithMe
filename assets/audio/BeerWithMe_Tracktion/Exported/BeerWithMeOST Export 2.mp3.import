@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cak2oalkkcqoc"
+path="res://.godot/imported/BeerWithMeOST Export 2.mp3-0bf1daf454c4fa70ea1b359ed278bb94.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/BeerWithMe_Tracktion/Exported/BeerWithMeOST Export 2.mp3"
+dest_files=["res://.godot/imported/BeerWithMeOST Export 2.mp3-0bf1daf454c4fa70ea1b359ed278bb94.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -35,11 +35,15 @@ enabled=PackedStringArray("res://addons/godot_icon/plugin.cfg")
 
 [input]
 
-button_right={
+going_right={
 "deadzone": 0.5,
 "events": []
 }
-button_left={
+going_left={
+"deadzone": 0.5,
+"events": []
+}
+touch={
 "deadzone": 0.5,
 "events": []
 }

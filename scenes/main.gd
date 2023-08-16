@@ -1,9 +1,10 @@
 extends Node
 
 @export var drop_scene: PackedScene
-@export var friction_initial: float = 0.5
-@export var slippery_increment: float = 0.05
-@export var speed = 200
+@export var floating_text_scene: PackedScene
+@export var friction_initial: float = 0.2
+@export var slippery_increment: float = 0.08
+@export var speed = 100
 @export var spawn_range: float = 1.5
 @export var spawn_min: float = 0.5
 @export var spawn_min_const: float = 0.2
@@ -12,12 +13,15 @@ extends Node
 var score: int = 0
 var slippery: float = 0.0
 var best_score: int = 0
+var screen_size: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#resize()
+	screen_size = get_viewport().size
 	randomize()
 	$Glass.new_game($Bar/BarCenterMarker.position, friction_initial, speed)
+	$MusicGingle64.play()
 
 func resize():
 	var v_size = get_viewport().size
@@ -32,7 +36,16 @@ func new_game():
 	$Bar.new_game()
 	$HUD.new_game()
 	$DropSpawnTimer.start()
+	set_music_speed(1.0)
+	$MusicGingle64.stop()
+	$MusicDragtime.play()
 
+func set_music_speed(factor: float):
+	$MusicDragtime.pitch_scale = factor
+	AudioServer.get_bus_effect(
+		AudioServer.get_bus_index("pitch_deshifter"),
+		0
+	).pitch_scale = 1.0/factor
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -57,17 +70,40 @@ func _on_glass_drop_collected():
 	score += 1
 	$HUD.set_score(score)
 
+	var text = floating_text_scene.instantiate()
+	text.position.x = $Glass.position.x 
+	text.position.y = $Glass.position.y - 120
+	text.clamp_to_viewport(screen_size)
+	text.set_text("+1")
+	text.set_text_theme("green")
+	add_child(text)
+
 func end_game():
 	best_score = max(best_score, score)
 	$DropSpawnTimer.stop()
+	$MusicDragtime.stop()
 	$HUD.end_game(best_score)
+	$MusicGingle64.play()
+	
 
-func _on_bar_bar_reached():
-	slippery += slippery_increment - slippery_increment * slippery
+func _on_bar_bar_reached(body: Node2D):
+	var weight: float = body.weight
+	slippery += weight
+	slippery = min(0.9991, slippery)
 	$Bar.set_slippery(slippery)
 	$HUD.set_slippery(slippery)
 	$Glass.set_slippery(slippery)
-	if slippery >= 0.99:
+	set_music_speed(1.0 + slippery / 2)
+	
+	var text = floating_text_scene.instantiate()
+	text.position = body.position
+	text.clamp_to_viewport(screen_size)
+	text.set_text(str(floor(weight * 100)) + "%")
+	text.set_size_factor(0.5 + weight * 20)
+	text.set_text_theme("red")
+	add_child(text)
+	
+	if slippery >= 0.999:
 		end_game()
 
 

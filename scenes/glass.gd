@@ -6,6 +6,7 @@ signal drop_collected
 @export var slippery_factor: float
 @export var friction_factor: float
 
+
 var momentum: float = 0
 var screen_size: Vector2
 var frame_count: int = 1
@@ -33,14 +34,18 @@ func new_game(start_position: Vector2, friction_initial, speed_initial):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var going_right =  int(Input.is_action_pressed("button_right") || Input.is_action_pressed("ui_right"))
-	var going_left = int(Input.is_action_pressed("button_left") || Input.is_action_pressed("ui_left"))
+	var going_right =  int((Input.is_action_pressed("touch")\
+	 && Input.is_action_pressed("going_right"))\
+	 || Input.is_action_pressed("ui_right"))
+	var going_left = int((Input.is_action_pressed("touch")\
+	 && Input.is_action_pressed("going_left"))\
+	 || Input.is_action_pressed("ui_left"))
 
 	# speed
 	var acceleration: float = (going_right - going_left)
 	#was_sliding && acceleration != 0 && slide()
 	#was_sliding = acceleration == 0
-	var friction: float = friction_factor - friction_factor * slippery_factor
+	var friction: float = friction_factor - friction_factor * min(0.99, sqrt(slippery_factor))
 	momentum += acceleration
 	momentum *= (1 - friction)
 	

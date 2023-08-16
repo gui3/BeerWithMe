@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxtp8rebmpred"]
 
 [ext_resource type="Script" path="res://scenes/drop.gd" id="1_12mks"]
-[ext_resource type="Texture2D" uid="uid://ba5w2uu5f7qtc" path="res://assets/beer_drop.png" id="1_jbeqa"]
+[ext_resource type="Texture2D" uid="uid://ba5w2uu5f7qtc" path="res://assets/art/beer_drop.png" id="1_jbeqa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2hf0k"]
 radius = 90.0

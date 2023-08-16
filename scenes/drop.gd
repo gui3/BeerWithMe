@@ -2,12 +2,15 @@ extends RigidBody2D
 
 signal bar_reached
 
+var weight: float
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var factor: float = randf() + 0.5
-	$CollisionShape2D.scale *= factor
-	$Sprite2D.scale *= factor
-	$VisibleOnScreenNotifier2D.scale *= factor
+	var factor: float = randf()
+	$CollisionShape2D.scale *= factor + 0.5
+	$Sprite2D.scale *= factor + 0.5
+	$VisibleOnScreenNotifier2D.scale *= factor + 0.5
+	weight = floor(factor * 4.99 + 1) / 100
 	#gravity_scale *= factor
 
 

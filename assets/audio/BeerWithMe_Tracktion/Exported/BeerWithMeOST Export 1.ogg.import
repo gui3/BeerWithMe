@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dahfp8w7ag6yg"
+path="res://.godot/imported/BeerWithMeOST Export 1.ogg-ee1bdae376d4cae4353345cb16c4067b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/BeerWithMe_Tracktion/Exported/BeerWithMeOST Export 1.ogg"
+dest_files=["res://.godot/imported/BeerWithMeOST Export 1.ogg-ee1bdae376d4cae4353345cb16c4067b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
