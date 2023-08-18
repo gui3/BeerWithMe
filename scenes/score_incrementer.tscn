@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw4hnws4vy27y"]
+
+[ext_resource type="Script" path="res://scenes/score_incrementer.gd" id="1_f7bd6"]
+[ext_resource type="LabelSettings" uid="uid://blw5ftif1h3va" path="res://themes/text_white.tres" id="2_jmnpv"]
+
+[sub_resource type="Animation" id="Animation_wwpq0"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.9),
+"transitions": PackedFloat32Array(0.435275, 0.313834, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.8, 1.8), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2t7e"]
+_data = {
+"default": SubResource("Animation_wwpq0")
+}
+
+[node name="ScoreIncrementer" type="Node2D"]
+z_index = 100
+script = ExtResource("1_f7bd6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = -1.0
+scale = Vector2(0.5, 0.5)
+text = "hello"
+label_settings = ExtResource("2_jmnpv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i2t7e")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

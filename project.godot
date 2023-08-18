@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Beer With Me"
 run/main_scene="res://scenes/main.tscn"
+config/use_custom_user_dir=true
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/bg_color=Color(0, 0.168627, 0.141176, 1)
 boot_splash/image="res://assets/Glass_full.png"
@@ -28,10 +29,6 @@ window/size/viewport_width=360
 window/size/viewport_height=640
 window/stretch/mode="viewport"
 window/handheld/orientation=1
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot_icon/plugin.cfg")
 
 [input]
 
@@ -50,5 +47,6 @@ touch={
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

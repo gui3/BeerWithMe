@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1wmt8pagsbu1"
+path="res://.godot/imported/Sound effects_mic_Take_6.wav-572f507faffd39a5cc0bc99239b00c33.sample"
+
+[deps]
+
+source_file="res://assets/audio/BeerWithMe_Tracktion/Recorded/Sound effects_mic_Take_6.wav"
+dest_files=["res://.godot/imported/Sound effects_mic_Take_6.wav-572f507faffd39a5cc0bc99239b00c33.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bayykv3q3qasa"]
+[gd_scene load_steps=13 format=3 uid="uid://bayykv3q3qasa"]
 
 [ext_resource type="Script" path="res://scenes/glass.gd" id="1_55vd0"]
 [ext_resource type="Texture2D" uid="uid://bvyoe0l45papm" path="res://assets/art/Glass_empty.png" id="1_kf6pp"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dro2m08ldp5ad" path="res://assets/audio/effects/Bump.wav" id="7_6x6dh"]
 [ext_resource type="AudioStream" uid="uid://cabg3yef2dfle" path="res://assets/audio/effects/Slide.wav" id="8_65yce"]
 [ext_resource type="AudioStream" uid="uid://chvcyenwt6s3e" path="res://assets/audio/effects/Tchin.wav" id="9_mlasf"]
+[ext_resource type="AudioStream" uid="uid://b8nyvucrh8hvr" path="res://assets/audio/effects/Ploc.wav" id="10_byq5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wmv8"]
 size = Vector2(282.5, 262.5)
@@ -71,5 +72,8 @@ max_polyphony = 8
 [node name="SoundTchin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_mlasf")
 volume_db = -12.0
+
+[node name="SoundPloc" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_byq5r")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

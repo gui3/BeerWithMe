@@ -27,12 +27,15 @@ func set_slippery(percent: float):
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	emit_signal("bar_reached", body)
 	body.queue_free()
-	play_animation_splash_out(body.position)
+	play_animation_splash_out(body)
 
-func play_animation_splash_out(position: Vector2):
+func play_animation_splash_out(body: Node2D):
 	#$SplashOutSprite.set_scale(Vector2.ONE * (randf() * 0.4 + 0.1))
-	$SplashOutSprite.position.x = position.x
+	$SplashOutSprite.position.x = body.position.x
 	$SplashOutSprite.show()
+	var pitch: float = 1.2 + (1 - body.weight * 20) * 0.4
+	$SplashSound.set_pitch_scale(pitch)
+	$SplashSound.play()
 	await get_tree().create_timer(0.3).timeout
 	$SplashOutSprite.hide()
 

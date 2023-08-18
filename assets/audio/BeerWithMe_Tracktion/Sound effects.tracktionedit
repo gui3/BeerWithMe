@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <EDIT appVersion="Waveform 12.5.5" projectID="553c4e/19c42a3" creationTime="1691784167014"
-      lastSignificantChange="189e69249af" modifiedBy="guill">
-  <TRANSPORT endToEnd="1" position="82.296875" scrubInterval="0.00801981203693714"
+      lastSignificantChange="18a04fdf8af" modifiedBy="guill">
+  <TRANSPORT endToEnd="1" position="102.5" scrubInterval="0.04875536588289805"
              snapToTimecode="1"/>
   <MACROPARAMETERS id="1001"/>
   <PITCHSEQUENCE>
@@ -29,7 +29,7 @@
     <INPUTDEVICE name="Virtual"/>
     <INPUTDEVICE name="Input 1"/>
     <INPUTDEVICE name="Input 2">
-      <INPUTDEVICEDESTINATION targetTrack="1024" targetIndex="0" armed="1"/>
+      <INPUTDEVICEDESTINATION targetTrack="1024" targetIndex="0" armed="0"/>
     </INPUTDEVICE>
     <INPUTDEVICE name="KeyLab 61"/>
   </INPUTDEVICES>
@@ -38,7 +38,7 @@
   <CONTROLLERMAPPINGS/>
   <VIEWSTATE minimalTransportBar="0" hiddenClips="" lockedClips="" chordTrackVisible="0"
              arrangerTrackVisible="0" enabledTrackTags="" currentSidePanel="Search"
-             viewleft="82.27682546990766" viewright="82.67781607175452" scrollWhenPlaying="0"
+             viewleft="101.1974648065631" viewright="103.635233100708" scrollWhenPlaying="0"
              scrollSuspended="0"/>
   <EDITMIXGROUPS/>
   <AUDIOEDITING/>
@@ -88,6 +88,19 @@
                id="1092" source="553c4e/3ec0475" sync="0" elastiqueMode="0"
                pan="0.0" colour="ffff0000" proxyAllowed="1" resamplingQuality="lagrange">
       <LOOPINFO rootNote="-1" numBeats="40.588625" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 5" start="82.75" length="12.342" offset="0.0"
+               id="1099" source="553c4e/177e05" sync="0" elastiqueMode="0" pan="0.0"
+               colour="ffff0000" proxyAllowed="1" resamplingQuality="lagrange">
+      <LOOPINFO rootNote="-1" numBeats="24.684" oneShot="0" denominator="4" numerator="4"
+                bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 6" start="97.0" length="4.960666666666668"
+               offset="0.0" id="1103" source="553c4e/1b525e2" sync="0" elastiqueMode="0"
+               pan="0.0" colour="ffff0000" proxyAllowed="1" resamplingQuality="lagrange"
+               gain="20.43000030517578">
+      <LOOPINFO rootNote="-1" numBeats="9.921333333333333" oneShot="0" denominator="4"
                 numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
     </AUDIOCLIP>
     <PLUGIN type="volume" id="1026" enabled="1">
@@ -168,6 +181,27 @@
                pan="0.0" colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
                fadeIn="0.01076909989162132" fadeOut="0.01837081746217754" gain="4.260000228881836">
       <LOOPINFO rootNote="-1" numBeats="40.588625" oneShot="0" denominator="4"
+                numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 5" start="96.0" length="0.25" offset="2.75"
+               id="1100" source="553c4e/177e05" sync="0" elastiqueMode="0" pan="0.0"
+               colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               fadeIn="0.0" fadeOut="0.0">
+      <LOOPINFO rootNote="-1" numBeats="24.684" oneShot="0" denominator="4" numerator="4"
+                bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 5" start="96.65625" length="0.125" offset="7.40625"
+               id="1101" source="553c4e/177e05" sync="0" elastiqueMode="0" pan="0.0"
+               colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               fadeIn="0.0" fadeOut="0.0" gain="18.55999946594238">
+      <LOOPINFO rootNote="-1" numBeats="24.684" oneShot="0" denominator="4" numerator="4"
+                bpm="0.0" inMarker="0" outMarker="-1"/>
+    </AUDIOCLIP>
+    <AUDIOCLIP name="mic Recording 6" start="102.5" length="0.5" offset="1.0"
+               id="1104" source="553c4e/1b525e2" sync="0" elastiqueMode="0"
+               pan="0.0" colour="ffffaa00" proxyAllowed="1" resamplingQuality="lagrange"
+               gain="24.0" fadeIn="0.0" fadeOut="0.0">
+      <LOOPINFO rootNote="-1" numBeats="9.921333333333333" oneShot="0" denominator="4"
                 numerator="4" bpm="0.0" inMarker="0" outMarker="-1"/>
     </AUDIOCLIP>
     <PLUGIN type="volume" id="1077" enabled="1">

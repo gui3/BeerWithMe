@@ -21,6 +21,13 @@ script = ExtResource("1_4gwkj")
 drop_scene = ExtResource("2_wsils")
 slip_incrementer_scene = ExtResource("3_r7emj")
 score_incrementer_scene = ExtResource("4_wlffa")
+friction_initial = null
+slippery_increment = null
+speed = null
+spawn_range = null
+spawn_min = null
+spawn_min_const = null
+spawn_score_factor = null
 
 [node name="DropPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_5jkbx")

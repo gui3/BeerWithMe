@@ -5,6 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://b4pj2emva7xbp" path="res://themes/text_red.tres" id="3_gr370"]
 
 [node name="FloatingText" type="Node2D"]
+z_index = 100
 script = ExtResource("1_xy0rc")
 green_theme = ExtResource("1_rjdtd")
 red_theme = ExtResource("3_gr370")

@@ -8,13 +8,18 @@ signal release(position: Vector2)
 @export var arrow_idle: LabelSettings
 @export var arrow_active: LabelSettings
 
+var displayed_score: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$GameControls.hide()
+	$MenuControls/ScoreLabel.hide()
+	$MenuControls/ScoreLogo.hide()
+	$MenuItemAnimation.play("active")
 	$MenuControls.show()
 
 func new_game():
+	$MenuItemAnimation.stop()
 	Input.action_release("button_left")
 	Input.action_release("button_right")
 	set_score(0)
@@ -26,7 +31,7 @@ func set_score(score: int):
 	#$GameControls/ScoreLabel.set_text(str(pints))
 	#$GameControls/TiersVarLabel.set_text(str(tiers))
 	$GameControls/ScoreLabel.set_text(str(score))
-	$AnimationPlayer.play("score_bump")
+	$ScoreAnimation.play("score_bump")
 
 func set_slippery(slippery: float):
 	# value
@@ -39,21 +44,23 @@ func set_slippery(slippery: float):
 	var label_settings = $GameControls/SlipperyLabel.label_settings
 	label_settings.font_color =Color8(r,g,b,255)
 	label_settings.outline_size = int(slippery * 20)
-	$AnimationPlayer.play("slip_bump")
+	$SlipAnimation.play("slip_bump")
 
-func end_game(score: int):
+func end_game(score: int, best_score: int):
 	$GameControls.hide()
-	Input.action_release("button_left")
-	Input.action_release("button_right")
+
+	$MenuItemAnimation.play("active")
+	$MenuControls/ScoreLabel.show()
+	$MenuControls/ScoreLogo.show()
 
 	#var pints: int = score / 5
 	#var tiers: int = score % 5
-	$MenuControls/BestScoreLabel.set_text(str(score))
+	$MenuControls/ScoreLabel.set_text(str(score))
+	$MenuControls/BestScoreLabel.set_text(str(best_score))
 	#$MenuControls/TiersVarLabel.set_text(str(tiers))
 	#$MenuControls/DropsLabel.set_text(str(score))
 	#$MenuControls/MessageBox.set_text("Again ?")
 	$MenuControls.show()
-
 
 func _on_button_menu_pressed():
 	$GameControls.show()
@@ -63,34 +70,18 @@ func _on_button_menu_pressed():
 func _on_button_stop_pressed():
 	emit_signal("game_ended")
 
-func _input(event):
-	if event is InputEventScreenTouch || event is InputEventMouseButton:
-		if event.pressed:
-			Input.action_press("touch")
-			if event.position.x < ($ReferenceRect.get_global_rect().size.x / 2):
-				Input.action_release("going_right")
-				Input.action_press("going_left")
-				$GameControls/ButtonRight.label_settings = arrow_idle
-				$GameControls/ButtonLeft.label_settings = arrow_active
-			else:
-				Input.action_release("going_left")
-				Input.action_press("going_right")
-				$GameControls/ButtonLeft.label_settings = arrow_idle
-				$GameControls/ButtonRight.label_settings = arrow_active
-		else:
-			Input.action_release("touch")
-			$GameControls/ButtonLeft.label_settings = arrow_idle
-			$GameControls/ButtonRight.label_settings = arrow_idle
-	
-	elif Input.is_action_pressed("touch") && event is InputEventMouseMotion:
-		if event.position.x < ($ReferenceRect.get_global_rect().size.x / 2):
-			Input.action_release("going_right")
-			Input.action_press("going_left")
-			$GameControls/ButtonRight.label_settings = arrow_idle
-			$GameControls/ButtonLeft.label_settings = arrow_active
-		else:
-			Input.action_release("going_left")
-			Input.action_press("going_right")
-			$GameControls/ButtonLeft.label_settings = arrow_idle
-			$GameControls/ButtonRight.label_settings = arrow_active
+func going_left(pressed: bool = true):
+	if pressed:
+		$GameControls/ButtonLeft.label_settings = arrow_active
+	else:
+		$GameControls/ButtonLeft.label_settings = arrow_idle
 
+func going_right(pressed: bool = true):
+	if pressed:
+		$GameControls/ButtonRight.label_settings = arrow_active
+	else:
+		$GameControls/ButtonRight.label_settings = arrow_idle
+
+
+func _on_menu_item_animation_animation_finished(anim_name):
+	$MenuItemAnimation.play(anim_name)

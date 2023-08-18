@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://csugo1d2aafs6"]
+[gd_scene load_steps=26 format=3 uid="uid://csugo1d2aafs6"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_rt83x"]
 [ext_resource type="Texture2D" uid="uid://ba5w2uu5f7qtc" path="res://assets/art/beer_drop.png" id="1_ybf8d"]
@@ -57,6 +57,11 @@ unicode = 32
 [sub_resource type="Shortcut" id="Shortcut_0nopm"]
 events = [SubResource("InputEventKey_lcnvu"), SubResource("InputEventKey_qtdj2")]
 
+[sub_resource type="LabelSettings" id="LabelSettings_hdugw"]
+line_spacing = 1.0
+font_size = 32
+outline_size = 3
+
 [sub_resource type="Animation" id="Animation_jdaog"]
 length = 0.001
 
@@ -93,7 +98,7 @@ resource_name = "slip_bump"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("GameControls/SlipperyLabel:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -105,7 +110,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("GameControls/SlipperyLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -115,12 +120,44 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 66), Vector2(-24, 32), Vector2(0, 66)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameControls/SlipperyLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1.51572, 1.86607, 1.93187, 1.36604, 1),
+"update": 0,
+"values": [0.0, -0.261799, 0.349066, -0.349066, 0.349066, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mbgon"]
 _data = {
 "RESET": SubResource("Animation_jdaog"),
 "score_bump": SubResource("Animation_i6804"),
 "slip_bump": SubResource("Animation_ciuay")
+}
+
+[sub_resource type="Animation" id="Animation_basjq"]
+resource_name = "active"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuControls/BestScoreLogo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-0.261799, 0.261799, -0.261799]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cme4j"]
+_data = {
+"active": SubResource("Animation_basjq")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty4ch"]
@@ -192,6 +229,7 @@ texture = ExtResource("1_ybf8d")
 offset_top = 66.0
 offset_right = 76.0
 offset_bottom = 114.0
+pivot_offset = Vector2(38, 24)
 text = "0%"
 label_settings = SubResource("LabelSettings_o8edl")
 horizontal_alignment = 1
@@ -235,6 +273,9 @@ offset_right = 154.0
 offset_bottom = 85.0
 text = "0"
 
+[node name="ScoreDestination" type="Marker2D" parent="GameControls"]
+position = Vector2(96, 56)
+
 [node name="MenuControls" type="CanvasLayer" parent="."]
 
 [node name="MessageBox" type="Label" parent="MenuControls"]
@@ -242,9 +283,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = 120.0
+offset_top = 88.0
 offset_right = -32.0
-offset_bottom = -342.0
+offset_bottom = -374.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_ge4dn")
@@ -262,10 +303,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = 16.0
-offset_right = 90.0
-offset_bottom = 112.0
+offset_left = -84.0
+offset_top = -32.0
+offset_right = 96.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -282,13 +323,13 @@ position = Vector2(88, 70)
 scale = Vector2(0.046875, 0.0429688)
 texture = ExtResource("1_ybf8d")
 
-[node name="BestScoreLogo" type="Sprite2D" parent="MenuControls"]
+[node name="ScoreLogo" type="Sprite2D" parent="MenuControls"]
 position = Vector2(24, 32)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ybf8d")
 flip_h = true
 
-[node name="BestScoreLabel" type="Label" parent="MenuControls"]
+[node name="ScoreLabel" type="Label" parent="MenuControls"]
 offset_left = 50.0
 offset_right = 192.0
 offset_bottom = 70.0
@@ -312,6 +353,41 @@ offset_bottom = 74.0
 text = "0"
 horizontal_alignment = 2
 
+[node name="BestLabel" type="Label" parent="MenuControls"]
+anchors_preset = -1
+anchor_right = 0.444444
+anchor_bottom = 0.810938
+offset_left = -7.99999
+offset_top = 416.0
+offset_right = -72.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.376991
+theme = ExtResource("4_ge4dn")
+text = "Best:"
+label_settings = SubResource("LabelSettings_hdugw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BestScoreLogo" type="Sprite2D" parent="MenuControls"]
+position = Vector2(80, 456)
+rotation = -0.261799
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ybf8d")
+flip_h = true
+
+[node name="BestScoreLabel" type="Label" parent="MenuControls"]
+offset_left = 104.0
+offset_top = 424.0
+offset_right = 246.0
+offset_bottom = 494.0
+text = "0"
+label_settings = SubResource("LabelSettings_1fokk")
+
 [node name="DropsLabel" type="Label" parent="MenuControls"]
 visible = false
 offset_left = 100.0
@@ -320,9 +396,19 @@ offset_right = 154.0
 offset_bottom = 85.0
 text = "0"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SlipAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mbgon")
+}
+
+[node name="ScoreAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mbgon")
+}
+
+[node name="MenuItemAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cme4j")
 }
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
@@ -343,3 +429,4 @@ mouse_default_cursor_shape = 2
 
 [connection signal="pressed" from="GameControls/ButtonStop" to="." method="_on_button_stop_pressed"]
 [connection signal="pressed" from="MenuControls/ButtonMenu" to="." method="_on_button_menu_pressed"]
+[connection signal="animation_finished" from="MenuItemAnimation" to="." method="_on_menu_item_animation_animation_finished"]
